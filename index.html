@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100100 Main Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="fullscreen-section">
+        <div class="container">
+            <!-- 100100 Section -->
+            <div class="title">
+                <h1>1  0  0  1  0  0</h1>
+                <p class="subtitle">{백백}</p>
+            </div>
+
+            <div class="content">
+                <div class="box-left">
+                    <h2 class="align-left">works</h2>
+                    <p class="align-right">Based in Seoul, design studio WORKS SERVICES works in different fields of graphic design, visual arts, object and many more with its unique and determined representation.</p>
+                </div>
+                <div class="box-right">
+                    <p class="align-left">Based in Seoul, design studio WORKS SERVICES works in different fields of graphic design, visual arts, object and many more with its unique and determined representation.</p>
+                    <h2 class="align-right">contact</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrollable section for Promotion and Playground -->
+    <section class="scrollable-section">
+        <!-- Buttons for Promotion and Playground -->
+        <div class="button-container">
+            <button class="tab-button selected" id="promotion-btn" onclick="selectTab('promotion')">Promotion</button>
+            <button class="tab-button" id="playground-btn" onclick="selectTab('playground')">Playground</button>
+        </div>
+
+        <!-- Tag Buttons -->
+        <div class="tag-container">
+            <button class="tag-button" onclick="filterContent('all')">all</button>
+            <button class="tag-button" onclick="filterContent('web')">web</button>
+            <button class="tag-button" onclick="filterContent('game')">game</button>
+            <button class="tag-button" onclick="filterContent('ai')">AI</button>
+        </div>
+
+        <!-- Thumbnails Section -->
+        <div class="thumbnail-container">
+            <div class="thumbnail" data-id="1" onclick="location.href='project1.html'">
+                <img src="src/thum_aespa.png" alt="Thumbnail 1">
+                <div class="project-info">
+                    <span>Project 1 Name</span>
+                    <span>2023.01 - 2023.06</span>
+                </div>
+            </div>
+            <div class="thumbnail" data-id="2" onclick="location.href='project2.html'">
+                <img src="src/thum_aespa.png" alt="Thumbnail 2">
+                <div class="project-info">
+                    <span>Project 2 Name</span>
+                    <span>2023.01 - 2023.06</span>
+                </div>
+            </div>
+            <div class="thumbnail" data-id="3" onclick="location.href='project3.html'">
+                <img src="src/thum_aespa.png" alt="Thumbnail 3">
+                <div class="project-info">
+                    <span>Project 3 Name</span>
+                    <span>2023.01 - 2023.06</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

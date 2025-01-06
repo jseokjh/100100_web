@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="detail-container">
+        <!-- 좌측 이미지 섹션 -->
+        <div class="left-section">
+            <img src="src/detail_aespa_01.png" alt="Project Image 1" class="project-image">
+            <img src="src/thum_aespa.png" alt="Project Image 2" class="project-image">
+            <img src="src/thum_aespa.png" alt="Project Image 3" class="project-image">
+        </div>
+
+        <!-- 우측 정보 섹션 -->
+        <div class="right-section">
+            <h1 class="project-title">Aespa Armageddon Promotion Web Redesign</h1>
+            <p class="project-date">2024.05.06</p>
+            <p class="project-role">Role: Design, Develop</p>
+            <p class="project-category">Category: <span class="category-tag">web</span></p>
+            <p class="project-link">Link: <a href="https://example.com" target="_blank">Visit Project</a></p>
+            <p class="project-text">
+                Based in Seoul, design studio WORKS SERVICES works in different fields of graphic design,
+                visual arts, objects, and many more with its unique and determined representation.
+            </p>
+        </div>
+
+        <!--메인 이미지 섹션 -->
+        <div class="center-image">
+            <img src="src/main_aespa.png" alt="Main Project Image"
+        </div>
+
+    </div>
+    <script>
+        const container = document.querySelector('.detail-container');
+        const leftSection = document.querySelector('.left-section');
+        const images = leftSection.querySelectorAll('img');
+
+        let isMerged = false;
+
+        window.addEventListener('scroll', () => {
+            const lastImage = images[images.length - 1];
+            const lastImageBottom = lastImage.getBoundingClientRect().bottom;
+
+            if (!isMerged && lastImageBottom <= window.innerHeight) {
+                container.classList.add('merged');
+                isMerged = true;
+            } else if (isMerged && lastImageBottom > window.innerHeight) {
+                container.classList.remove('merged');
+                container.classList.add('reverse');
+                isMerged = false;
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (isMerged) {
+                container.classList.remove('reverse');
+            }
+        });
+    </script>
+
+</body>
+</html>
