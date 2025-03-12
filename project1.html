@@ -8,59 +8,86 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <div class="gradient-overlay"></div>
     <div class="detail-container">
         <!-- 좌측 이미지 섹션 -->
-        <div class="left-section">
-            <img src="src/detail_aespa_01.png" alt="Project Image 1" class="project-image">
-            <img src="src/thum_aespa.png" alt="Project Image 2" class="project-image">
-            <img src="src/thum_aespa.png" alt="Project Image 3" class="project-image">
-        </div>
+    <div class="left-section">
+        <img src="src/detail_aespa_01.png" alt="Project Image 1" class="project-image">
+        <img src="src/thum_aespa.png" alt="Project Image 2" class="project-image">
+
+        <!-- 이미지 대신 비디오 삽입 -->
+        <video class="project-image" autoplay muted loop>
+            <source src="src/aespa_video.mp4" type="video/mp4">
+            브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+    </div>
+
+
 
         <!-- 우측 정보 섹션 -->
         <div class="right-section">
             <h1 class="project-title">Aespa Armageddon Promotion Web Redesign</h1>
-            <p class="project-date">2024.05.06</p>
+            <p class="project-date">2024.05 - 2024.06</p>
             <p class="project-role">Role: Design, Develop</p>
             <p class="project-category">Category: <span class="category-tag">web</span></p>
             <p class="project-link">Link: <a href="https://example.com" target="_blank">Visit Project</a></p>
             <p class="project-text">
-                Based in Seoul, design studio WORKS SERVICES works in different fields of graphic design,
-                visual arts, objects, and many more with its unique and determined representation.
+                24년 5월 발매된 에스파의 정규앨범 ‘Armageddon’을 홍보하는 프로모션 웹 페이지 기획 및 개발을 했습니다. 리디자인 작업으로, 실제 오피셜 프로모션과 무관합니다.
+                </br></br>앨범의 컨셉 중 ‘다중우주’, ‘외계인’, ‘종말’과 같은 키워드에서 영감을 받아 팬들이 참여형 웹사이트 형식으로 자연스럽게 에스파 콘텐츠에 유입될 수 있도록 기획하였습니다.
             </p>
         </div>
-
-        <!--메인 이미지 섹션 -->
-        <div class="center-image">
-            <img src="src/main_aespa.png" alt="Main Project Image"
-        </div>
-
     </div>
+
+    <!-- 스크롤 시 표시될 섹션 -->
+    <div class="new-section">
+        <div class="info-txt">
+            에스파의 정규 1집 앨범 Armageddon의 프로모션 웹 사이트를 기획 및 제작하였습니다.</br></br>
+            Design: Figma </br> Development: HTML,CSS,JAVA
+            </br></br> 각 페이지에 Three.js를 활용해 3D 상호작용 UI를 구현하고, 직접 사운드 디자인을 제작하여 몰입감을 극대화했습니다.
+        </div>
+        <img src="src/main_aespa.png" class="main-image">
+
+        <!-- 두 개의 이미지를 가로 정렬하는 컨테이너 추가 -->
+        <div class="second-images-container">
+            <img src="src/middle01.png" class="second-image">
+            <img src="src/middle02.png" class="second-image">
+        </div>
+    </div>
+
     <script>
-        const container = document.querySelector('.detail-container');
+    document.addEventListener('DOMContentLoaded', () => {
         const leftSection = document.querySelector('.left-section');
-        const images = leftSection.querySelectorAll('img');
+        const newSection = document.querySelector('.new-section');
+        const gradientOverlay = document.querySelector('.gradient-overlay');
 
-        let isMerged = false;
+        leftSection.addEventListener('scroll', () => {
+            const scrollTop = leftSection.scrollTop;
+            const clientHeight = leftSection.clientHeight;
+            const scrollHeight = leftSection.scrollHeight;
 
-        window.addEventListener('scroll', () => {
-            const lastImage = images[images.length - 1];
-            const lastImageBottom = lastImage.getBoundingClientRect().bottom;
+            const isBottom = scrollTop + clientHeight >= scrollHeight - 1; // 약간의 오차 허용
 
-            if (!isMerged && lastImageBottom <= window.innerHeight) {
-                container.classList.add('merged');
-                isMerged = true;
-            } else if (isMerged && lastImageBottom > window.innerHeight) {
-                container.classList.remove('merged');
-                container.classList.add('reverse');
-                isMerged = false;
+            if (isBottom) {
+                newSection.classList.add('visible'); // 새로운 섹션 표시
+
+                // 부드러운 스크롤
+                newSection.scrollIntoView({
+                    behavior: 'smooth', // 부드러운 애니메이션 효과
+                    block: 'start',     // 화면 상단에 배치
+                });
+
+                // 블랙 그라데이션 활성화
+                gradientOverlay.classList.add('active');
+            } else {
+                // 스크롤을 다시 위로 올리면 블랙 그라데이션 제거
+                gradientOverlay.classList.remove('active');
             }
         });
+    });
 
-        window.addEventListener('scroll', () => {
-            if (isMerged) {
-                container.classList.remove('reverse');
-            }
-        });
+
+
     </script>
 
 </body>

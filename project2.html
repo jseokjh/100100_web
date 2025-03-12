@@ -1,10 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <div class="gradient-overlay"></div>
+    <div class="detail-container">
+        <!-- 좌측 이미지 섹션 -->
+    <div class="left-section">
+        <img src="src/main_nudake.png" alt="Project Image 1" class="project-image">
+        <img src="src/thum_nudake.png" alt="Project Image 2" class="project-image">
+
+        <!-- 이미지 대신 비디오 삽입 -->
+        <video class="project-image" autoplay muted loop>
+            <source src="src/nudake_video.mp4" type="video/mp4">
+            브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+    </div>
+
+
+
+        <!-- 우측 정보 섹션 -->
+        <div class="right-section">
+            <h1 class="project-title">NUDAKE Halloween cake 'SPECTER' </br> Promotion Web Redesign</h1>
+            <p class="project-date">2024.05 - 2024.06</p>
+            <p class="project-role">Role: Design, Develop</p>
+            <p class="project-category">Category: <span class="category-tag">web</span></p>
+            <p class="project-link">Link: <a href="https://example.com" target="_blank">Visit Project</a></p>
+            <p class="project-text">
+                할로윈 시즌을 컨셉으로 하여 누데이크의 새로운 케익을 홍보하는 프로모션 웹 페이지 기획 및 개발을 했습니다. 리디자인 작업으로, 실제 오피셜 프로모션과 무관합니다.
+                </br></br>이미지 생성 AI를 활용해 '세 가지 맛을 숨긴 유령'을 주제로 한 기획의 그래픽을 구현했습니다.
+                </br>할로윈 분위기에 맞춰 기존에 없던 유령 모양의 케이크 이미지를 제작하고, 영상 생성 AI를 활용해 웹페이지의 시각적 요소로 활용하였습니다.
+            </p>
+        </div>
+    </div>
+
+    <!-- 스크롤 시 표시될 섹션 -->
+    <div class="new-section">
+        <div class="info-txt">
+            에스파의 정규 1집 앨범 Armageddon의 프로모션 웹 사이트를 기획 및 제작하였습니다.</br></br>
+            Design: Figma </br> Development: HTML,CSS,JAVA
+            </br></br> 각 페이지에 Three.js를 활용해 3D 상호작용 UI를 구현하고, 직접 사운드 디자인을 제작하여 몰입감을 극대화했습니다.
+        </div>
+        <img src="src/main_aespa.png" class="main-image">
+
+        <!-- 두 개의 이미지를 가로 정렬하는 컨테이너 추가 -->
+        <div class="second-images-container">
+            <img src="src/middle01.png" class="second-image">
+            <img src="src/middle02.png" class="second-image">
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const leftSection = document.querySelector('.left-section');
+        const newSection = document.querySelector('.new-section');
+        const gradientOverlay = document.querySelector('.gradient-overlay');
+
+        leftSection.addEventListener('scroll', () => {
+            const scrollTop = leftSection.scrollTop;
+            const clientHeight = leftSection.clientHeight;
+            const scrollHeight = leftSection.scrollHeight;
+
+            const isBottom = scrollTop + clientHeight >= scrollHeight - 1; // 약간의 오차 허용
+
+            if (isBottom) {
+                newSection.classList.add('visible'); // 새로운 섹션 표시
+
+                // 부드러운 스크롤
+                newSection.scrollIntoView({
+                    behavior: 'smooth', // 부드러운 애니메이션 효과
+                    block: 'start',     // 화면 상단에 배치
+                });
+
+                // 블랙 그라데이션 활성화
+                gradientOverlay.classList.add('active');
+            } else {
+                // 스크롤을 다시 위로 올리면 블랙 그라데이션 제거
+                gradientOverlay.classList.remove('active');
+            }
+        });
+    });
+
+
+
+    </script>
 
 </body>
 </html>
